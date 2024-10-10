@@ -22,7 +22,8 @@
 			"~consts": ["./lib/consts.ts"],
 			"~lib/*": ["./lib/*"],
 			"~components/*": ["./components/*"],
-			"~ui/*": ["./components/ui/*"]
+			"~ui/*": ["./components/ui/*"],
+			"~stores/*": ["./stores/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
