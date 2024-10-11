@@ -5,7 +5,7 @@ import type {
 	CloudinaryUploadWidgetInfo,
 } from 'next-cloudinary'
 import { CLOUDINARY_UPLOAD_PRESET } from '~consts'
-import { setCloudinaryPublicId } from '~/stores/cloudinary'
+import { setCloudinaryStore } from '~/stores/cloudinary'
 import { Button } from '~ui/button'
 
 const config: CldUploadWidgetProps = {
@@ -26,7 +26,9 @@ export function UploadImage() {
 
 				const result = info as CloudinaryUploadWidgetInfo
 
-				setCloudinaryPublicId(result.public_id)
+				setCloudinaryStore({
+					originalImage: result.public_id,
+				})
 
 				widget.close()
 			}}
