@@ -1,48 +1,69 @@
 'use client'
-import { m } from 'framer-motion'
+import { motion as m } from 'framer-motion'
+
+const letters = [
+	{ char: 'S', color: '#39FF14', shadow: '0 0 10px rgba(57, 255, 20, 0.5)' }, // Primera letra: verde
+	{
+		char: 'P',
+		color: '#A2A2A2',
+		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
+	}, // Letras intermedias: muted-foreground
+	{
+		char: 'O',
+		color: '#A2A2A2',
+		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
+	},
+	{
+		char: 'O',
+		color: '#A2A2A2',
+		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
+	},
+	{
+		char: 'K',
+		color: '#A2A2A2',
+		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
+	},
+	{
+		char: 'I',
+		color: '#A2A2A2',
+		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
+	},
+	{
+		char: 'F',
+		color: '#A2A2A2',
+		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
+	},
+	{ char: 'Y', color: '#FF7518', shadow: '0 0 10px rgba(255, 117, 24, 0.5)' }, // Última letra: naranja
+]
 
 export function Spookify() {
 	return (
 		<div className='flex relative w-auto'>
-			<m.p
-				className='text-9xl font-rage text-[#39FF14] relative'
-				initial={{ y: 0 }}
-				animate={{ y: [0, -10, 0] }}
-				transition={{
-					duration: 1.5,
-					ease: 'easeInOut',
-					repeat: Number.POSITIVE_INFINITY,
-				}}
-				style={{ textShadow: '0 0 10px rgba(57, 255, 20, 0.5)' }}
-			>
-				S
-			</m.p>
-			<m.p
-				className='text-9xl font-rage text-muted-foreground relative'
-				initial={{ y: 0 }}
-				animate={{ y: [0, -10, 0] }}
-				transition={{
-					duration: 1.5,
-					ease: 'easeInOut',
-					repeat: Number.POSITIVE_INFINITY,
-				}}
-				style={{ textShadow: '0 0 10px rgba(128, 128, 128, 0.5)' }}
-			>
-				POOKIF
-			</m.p>
-			<m.p
-				className='text-9xl font-rage text-[#FF7518] relative'
-				initial={{ y: 0 }}
-				animate={{ y: [0, -10, 0] }}
-				transition={{
-					duration: 1.5,
-					ease: 'easeInOut',
-					repeat: Number.POSITIVE_INFINITY,
-				}}
-				style={{ textShadow: '0 0 10px rgba(255, 117, 24, 0.5)' }}
-			>
-				Y
-			</m.p>
+			{letters.map((letter, index) => (
+				<m.p
+					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+					key={index}
+					className='text-9xl font-rage relative'
+					initial={{ y: 0, rotate: 0, opacity: 1 }}
+					animate={{
+						y: [0, -10, 0],
+						rotate: [0, 2, -2, 0],
+						opacity: [1, 0.8, 1],
+					}}
+					transition={{
+						duration: 1.5,
+						ease: 'easeInOut',
+						repeat: Number.POSITIVE_INFINITY,
+						delay: index * 0.3,
+					}}
+					style={{
+						color: letter.color,
+						textShadow: letter.shadow,
+					}}
+				>
+					{letter.char}
+				</m.p>
+			))}
 		</div>
 	)
 }
