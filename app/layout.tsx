@@ -52,4 +52,7 @@ export default Layout
 export const metadata: Metadata = {
 	title: 'Spookify',
 	description: 'From everyday to monstrous, in one click',
+	icons: {
+		icon: '/icon.png',
+	},
 }
