@@ -4,15 +4,18 @@ import { useStore } from '@nanostores/react'
 type Selector<T> = (state: ImageStore) => T
 
 interface ImageStore {
-	public_id: string
+	originalImage: string
+	transformedImage: string
 }
 
 const store = map<ImageStore>({
-	public_id: '',
+	originalImage: 'spookify/ea9fvdvfshritxssgwt8',
+	transformedImage: '',
 })
 
-export const setCloudinaryPublicId = (public_id: string) => {
-	store.set({ public_id })
+export const setCloudinaryStore = (state: Partial<ImageStore>) => {
+	const prev = store.get()
+	store.set({ ...prev, ...state })
 }
 
 export const useCloudinaryStore = <T>(selector: Selector<T>): T => {
