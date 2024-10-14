@@ -2,12 +2,12 @@
 import { motion as m } from 'framer-motion'
 
 const letters = [
-	{ char: 'S', color: '#39FF14', shadow: '0 0 10px rgba(57, 255, 20, 0.5)' }, // Primera letra: verde
+	{ char: 'S', color: '#39FF14', shadow: '0 0 10px rgba(57, 255, 20, 0.5)' },
 	{
 		char: 'P',
 		color: '#A2A2A2',
 		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
-	}, // Letras intermedias: muted-foreground
+	},
 	{
 		char: 'O',
 		color: '#A2A2A2',
@@ -33,7 +33,7 @@ const letters = [
 		color: '#A2A2A2',
 		shadow: '0 0 10px rgba(128, 128, 128, 0.5)',
 	},
-	{ char: 'Y', color: '#FF7518', shadow: '0 0 10px rgba(255, 117, 24, 0.5)' }, // Última letra: naranja
+	{ char: 'Y', color: '#FF7518', shadow: '0 0 10px rgba(255, 117, 24, 0.5)' },
 ]
 
 export function Spookify() {
@@ -43,7 +43,7 @@ export function Spookify() {
 				<m.p
 					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 					key={index}
-					className='text-9xl font-rage relative'
+					className='text-7xl md:text-8xl lg:text-9xl font-rage relative '
 					initial={{ y: 0, rotate: 0, opacity: 1 }}
 					animate={{
 						y: [0, -10, 0],
