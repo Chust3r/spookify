@@ -3,7 +3,7 @@
 import { useRouter, usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { cn } from '~/lib/utils'
-import { GhostSprite } from '~components/sprites/ghost'
+
 
 const routes = ['/', '/gallery', '/transform']
 
@@ -12,8 +12,8 @@ export function Header() {
 	const pathname = usePathname()
 
 	return (
-		<header className='py-2'>
-			<div>
+		<header className='sticky top-0 z-10 mt-2'>
+			<div className='bg-neutral-800/10 backdrop-blur-3xl rounded-full w-fit h-auto mx-auto px-4 py-2'>
 				<ul className='flex justify-center items-center gap-5'>
 					{routes.map((path, index) => {
 						const isActive = pathname === path
