@@ -9,7 +9,7 @@ interface ImageStore {
 }
 
 const store = map<ImageStore>({
-	originalImage: 'spookify/ea9fvdvfshritxssgwt8',
+	originalImage: '',
 	transformedImage: '',
 })
 
