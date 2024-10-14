@@ -21,7 +21,7 @@ export function RenderImage({ cloudinaryPublicId }: Props) {
 	})
 
 	return (
-		<div className='w-[500px] h-[400px] relative'>
+		<div className='w-[400px] h-[300px] relative'>
 			<Image
 				src={url}
 				alt=''
