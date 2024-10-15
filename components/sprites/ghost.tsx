@@ -1,7 +1,5 @@
-'use client'
-
 import { useEffect, useState } from 'react'
-import { m } from 'framer-motion'
+import { motion as m } from 'framer-motion'
 
 const sprites = [
 	'/ghost/1.png',
@@ -36,12 +34,14 @@ export function GhostSprite({ delay = 200, size = 40 }: Props) {
 
 	return (
 		<div className='relative w-fit h-fit m-2'>
-            <span className='absolute bg-slate-50 blur opacity-10 rounded-full w-full h-full'/>
 			<m.img
 				src={sprites[currentIndex]}
 				alt='Ghost Sprite'
 				width={size}
 				height={size}
+				initial={{ opacity: 0, scale: 0.8 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.3 }}
 			/>
 		</div>
 	)

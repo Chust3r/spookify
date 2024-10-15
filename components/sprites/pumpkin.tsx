@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { m } from 'framer-motion'
+import { motion as m } from 'framer-motion'
 
 const sprites = [
 	'/pumpkin/1.png',
@@ -42,6 +42,9 @@ export function PumpkinSprite({ delay = 200, size = 40 }: Props) {
 				alt='Pumpkin Sprite'
 				width={size}
 				height={size}
+				initial={{ opacity: 0.5, scale: 0.8 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.3 }}
 			/>
 		</div>
 	)
