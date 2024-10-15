@@ -12,7 +12,7 @@ export function Header() {
 	const pathname = usePathname()
 
 	return (
-		<header className='sticky top-0 z-10 mt-2'>
+		<header className='sticky top-2 z-10 mt-2'>
 			<div className='bg-neutral-800/10 backdrop-blur-3xl rounded-full w-fit h-auto mx-auto px-4 py-2'>
 				<ul className='flex justify-center items-center gap-5'>
 					{routes.map((path, index) => {
