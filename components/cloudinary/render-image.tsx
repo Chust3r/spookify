@@ -1,18 +1,9 @@
 'use client'
-import { CldImage } from 'next-cloudinary'
-import type { CldImageProps } from 'next-cloudinary'
 import { getCldImageUrl } from 'next-cloudinary'
 import Image from 'next/image'
 
 interface Props {
 	cloudinaryPublicId: string
-}
-
-const config: CldImageProps = {
-	src: '',
-	width: 500,
-	height: 400,
-	alt: 'Some alt text',
 }
 
 export function RenderImage({ cloudinaryPublicId }: Props) {
@@ -21,10 +12,10 @@ export function RenderImage({ cloudinaryPublicId }: Props) {
 	})
 
 	return (
-		<div className='w-[400px] h-[300px] relative'>
+		<div className='w-[400px] h-[300px] bg-neutral-800/20 backdrop-blur rounded-lg relative overflow-hidden'>
 			<Image
 				src={url}
-				alt=''
+				alt='Original Image'
 				fill
 				className='w-full h-full object-contain rounded overflow-hidden'
 			/>

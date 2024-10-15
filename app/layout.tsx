@@ -35,7 +35,7 @@ function Layout({ children }: Props) {
 					geistSans.variable,
 					geistMono.variable,
 					brushFont.variable,
-					'w-full h-dvh min-h-fit overflow-hidden max-w-7xl mx-auto flex flex-col relative'
+					'w-full h-dvh mx-auto flex flex-col relative'
 				)}
 			>
 				<Ghosts />
