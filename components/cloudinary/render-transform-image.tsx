@@ -2,8 +2,6 @@
 
 import { useCloudinaryImage } from '~/hooks/useCloudinaryImage'
 import Image from 'next/image'
-import { Sparkles } from 'lucide-react'
-import { buttonVariants } from '~ui/button'
 
 interface Props {
 	imageUrl?: string
@@ -16,15 +14,9 @@ export function RenderTransformImage({ imageUrl }: Props) {
 				<span className='w-20 h-20 absolute bg-neutral-400 blur-2xl rounded-full opacity-10' />
 				<span className='w-20 h-20 absolute bottom-0 right-0 bg-neutral-400 blur-3xl rounded-full opacity-10' />
 				<div className='w-full h-full justify-center items-center flex flex-col gap-5'>
-					<Sparkles className='size-10 stroke-muted-foreground' />
-					<p
-						className={buttonVariants({
-							variant: 'ghost',
-							className: 'hover:bg-none',
-						})}
-					>
-						Select a filter
-					</p>
+					<span className='text-muted-foreground font-rage text-lg'>
+						Your Spooky Side
+					</span>
 				</div>
 			</div>
 		)

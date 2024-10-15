@@ -36,18 +36,17 @@ export function UploadImage() {
 		>
 			{({ open }) => {
 				return (
-					<section className='w-[400px] h-[300px] bg-neutral-800/20 backdrop-blur rounded-lg relative overflow-hidden'>
+					// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+					<section
+						className='w-[400px] h-[300px] bg-neutral-800/20 backdrop-blur rounded-lg relative overflow-hidden cursor-pointer'
+						onClick={() => open()}
+					>
 						<span className='w-20 h-20 absolute bg-neutral-400 blur-2xl rounded-full opacity-10' />
 						<span className='w-20 h-20 absolute bottom-0 right-0 bg-neutral-400 blur-3xl rounded-full opacity-10' />
 						<div className='w-full h-full justify-center items-center flex flex-col gap-3'>
-							<Images className='stroke-muted-foreground size-10' />
-							<Button
-								onClick={() => open()}
-								variant='ghost'
-								className='font-medium '
-							>
-								Upload Image
-							</Button>
+							<span className='text-muted-foreground font-rage text-lg'>
+								Your image
+							</span>
 						</div>
 					</section>
 				)
