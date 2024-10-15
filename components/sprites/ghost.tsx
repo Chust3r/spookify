@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react'
 import { motion as m } from 'framer-motion'
 
 const sprites = [
-	'/ghost/1.png',
-	'/ghost/2.png',
-	'/ghost/3.png',
-	'/ghost/4.png',
-	'/ghost/5.png',
-	'/ghost/6.png',
-	'/ghost/7.png',
-	'/ghost/8.png',
-	'/ghost/9.png',
-	'/ghost/10.png',
-	'/ghost/11.png',
-	'/ghost/12.png',
+	'/ghost/ghost-1.png',
+	'/ghost/ghost-2.png',
+	'/ghost/ghost-3.png',
+	'/ghost/ghost-4.png',
+	'/ghost/ghost-5.png',
+	'/ghost/ghost-6.png',
+	'/ghost/ghost-7.png',
+	'/ghost/ghost-8.png',
+	'/ghost/ghost-9.png',
+	'/ghost/ghost-10.png',
+	'/ghost/ghost-11.png',
+	'/ghost/ghost-12.png',
 ]
 
 interface Props {

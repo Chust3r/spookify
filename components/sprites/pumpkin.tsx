@@ -4,18 +4,18 @@ import { useEffect, useState } from 'react'
 import { motion as m } from 'framer-motion'
 
 const sprites = [
-	'/pumpkin/1.png',
-	'/pumpkin/2.png',
-	'/pumpkin/3.png',
-	'/pumpkin/4.png',
-	'/pumpkin/5.png',
-	'/pumpkin/6.png',
-	'/pumpkin/7.png',
-	'/pumpkin/8.png',
-	'/pumpkin/9.png',
-	'/pumpkin/10.png',
-	'/pumpkin/11.png',
-	'/pumpkin/12.png',
+	'/pumpkin/pumpkin-1.png',
+	'/pumpkin/pumpkin-2.png',
+	'/pumpkin/pumpkin-3.png',
+	'/pumpkin/pumpkin-4.png',
+	'/pumpkin/pumpkin-5.png',
+	'/pumpkin/pumpkin-6.png',
+	'/pumpkin/pumpkin-7.png',
+	'/pumpkin/pumpkin-8.png',
+	'/pumpkin/pumpkin-9.png',
+	'/pumpkin/pumpkin-10.png',
+	'/pumpkin/pumpkin-11.png',
+	'/pumpkin/pumpkin-12.png',
 ]
 
 interface Props {
