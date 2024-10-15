@@ -21,8 +21,8 @@ export function Ghosts() {
 	useEffect(() => {
 		const generatedGhosts = Array.from({ length: 30 }).map(() => ({
 			id: Math.random(),
-			x: getRandom(-10, 110), // Cambia el rango para cubrir toda la pantalla
-			y: getRandom(-10, 100), // Cambia el rango para cubrir toda la pantalla
+			x: getRandom(-10, 110),
+			y: getRandom(-10, 100),
 			delay: getRandom(0, 10),
 			size: getRandom(20, 40),
 			duration: getRandom(8, 15),
@@ -32,8 +32,6 @@ export function Ghosts() {
 
 	return (
 		<div className='w-full h-full absolute z-[-1] overflow-hidden'>
-			{' '}
-			{/* Asegúrate de que no se vea el desbordamiento */}
 			{ghosts.map((ghost) => (
 				<motion.div
 					key={ghost.id}
