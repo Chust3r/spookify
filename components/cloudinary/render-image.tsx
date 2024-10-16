@@ -16,10 +16,10 @@ export function RenderImage({ cloudinaryPublicId }: Props) {
 	const { isLoading, error } = useCloudinaryImage(url)
 
 	if (error) {
-		return <div>{error.message}</div>
+		return <div className='text-red-500'>{error.message}</div>
 	}
 
-	if (isLoading)
+	if (isLoading) {
 		return (
 			<div className='w-[400px] h-[300px] bg-neutral-800/20 backdrop-blur rounded-lg relative overflow-hidden grid place-content-center gap-2'>
 				<div className='w-full h-10 justify-center items-center flex relative'>
@@ -30,17 +30,16 @@ export function RenderImage({ cloudinaryPublicId }: Props) {
 				<span className='text-muted-foreground font-rage'>Loading</span>
 			</div>
 		)
+	}
 
 	return (
-		<div className='w-[400px] h-[300px]  relative overflow-hidden'>
-			{!isLoading && (
-				<Image
-					src={url}
-					alt='Original Image'
-					fill
-					className='w-full h-full object-cover object-center rounded overflow-hidden'
-				/>
-			)}
+		<div className='w-[400px] h-[300px] relative overflow-hidden bg-neutral-800/20 backdrop-blur rounded'>
+			<Image
+				src={url}
+				alt='Original Image'
+				fill
+				className='w-full h-full object-cover object-center rounded overflow-hidden'
+			/>
 		</div>
 	)
 }

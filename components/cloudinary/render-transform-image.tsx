@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function RenderTransformImage({ imageUrl }: Props) {
-	if (!imageUrl)
+	if (!imageUrl) {
 		return (
 			<div className='w-[400px] h-[300px] bg-neutral-800/20 backdrop-blur rounded-lg relative overflow-hidden'>
 				<span className='w-20 h-20 absolute bg-neutral-400 blur-2xl rounded-full opacity-10' />
@@ -23,9 +23,9 @@ export function RenderTransformImage({ imageUrl }: Props) {
 				</div>
 			</div>
 		)
+	}
 
 	const { isLoading, error } = useCloudinaryImage(imageUrl)
-
 
 	useEffect(() => {
 		if (!isLoading) {

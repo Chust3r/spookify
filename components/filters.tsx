@@ -1,3 +1,4 @@
+'use client'
 import {
 	Carousel,
 	CarouselContent,
@@ -40,16 +41,20 @@ export function Filters() {
 							)}
 							onClick={() => {
 								if (!imageUploaded || isLoading) return
-								setFilterStore({ filter: filter, isLoading: true })
 
-								const transformedImage = getCldImageUrl({
-									src: imageUploaded,
-									replaceBackground: filter.prompt,
-								})
+								// Solo actualizar si el filtro es diferente
+								if (filterActive?.id !== filter.id) {
+									setFilterStore({ filter: filter, isLoading: true })
 
-								setCloudinaryStore({
-									transformedImage,
-								})
+									const transformedImage = getCldImageUrl({
+										src: imageUploaded,
+										...filter.options,
+									})
+
+									setCloudinaryStore({
+										transformedImage,
+									})
+								}
 							}}
 						>
 							<div className='p-1 h-full w-full'>
