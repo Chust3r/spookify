@@ -4,42 +4,46 @@ import { useEffect, useState } from 'react'
 
 export function useCloudinaryImage(imageUrl: string) {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
-	const [time, setTime] = useState<number>(0)
-	const [error, setError] = useState<Error>()
+	const [error, setError] = useState<Error | null>(null)
+	const [image, setImage] = useState<HTMLImageElement | null>(null)
 
 	useEffect(() => {
+		if (!imageUrl) {
+			setIsLoading(false)
+			setImage(null)
+			return
+		}
+
 		setIsLoading(true)
+		setError(null)
 
 		const startTime = Date.now()
+		const img = new Image()
 
-		const image = new Image()
+		img.src = imageUrl
 
-		image.src = imageUrl
-
-		image.addEventListener('load', () => {
+		const handleLoad = () => {
 			setIsLoading(false)
+			setImage(img)
+		}
 
-			const endTime = Date.now()
+		const handleError = () => {
+			setIsLoading(false)
+			setError(new Error('Error while loading the image'))
+		}
 
-			setTime((endTime - startTime) / 1000)
-		})
-
-		image.addEventListener('error', () => {
-			const e = new Error('Error while loading the image')
-
-			setError(e)
-		})
+		img.addEventListener('load', handleLoad)
+		img.addEventListener('error', handleError)
 
 		return () => {
-			image.removeEventListener('load', () => {})
-			image.removeEventListener('error', () => {})
+			img.removeEventListener('load', handleLoad)
+			img.removeEventListener('error', handleError)
 		}
 	}, [imageUrl])
 
 	return {
 		isLoading,
-		time,
 		error,
-		imageUrl
+		image,
 	}
 }
