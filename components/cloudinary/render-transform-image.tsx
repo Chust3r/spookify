@@ -57,9 +57,14 @@ export function RenderTransformImage({ imageUrl }: Props) {
 
 		if (error) {
 			return (
-				<span className='text-muted-foreground font-rage'>
-					Something went wrong
-				</span>
+				<div className='w-full h-full flex flex-col justify-center items-center gap-3'>
+					<p className='text-muted-foreground font-rage'>
+						Something went wrong
+					</p>
+					<span className='text-xs text-muted-foreground'>
+						{error.message} Try reload the page
+					</span>
+				</div>
 			)
 		}
 
