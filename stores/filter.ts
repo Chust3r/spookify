@@ -1,13 +1,17 @@
 import { map } from 'nanostores'
 import { useStore } from '@nanostores/react'
+import type { IFilter } from '~lib/filters'
 
 type Selector<T> = (state: FilterStore) => T
 
 interface FilterStore {
-	filter?: string
+	isLoading: boolean
+	filter?: IFilter
 }
 
-const store = map<FilterStore>({})
+const store = map<FilterStore>({
+	isLoading: false,
+})
 
 export const setFilterStore = (state: Partial<FilterStore>) => {
 	const prev = store.get()

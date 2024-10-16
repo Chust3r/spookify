@@ -8,10 +8,17 @@ import {
 import { filters } from '~lib/filters'
 import { useFilterStore, setFilterStore } from '~stores/filter'
 import { cn } from '~lib/utils'
+import { setCloudinaryStore, useCloudinaryStore } from '~stores/cloudinary'
+import { getCldImageUrl } from 'next-cloudinary'
 
 export function Filters() {
-	const { filterActive } = useFilterStore((state) => ({
+	const { filterActive, isLoading } = useFilterStore((state) => ({
 		filterActive: state.filter,
+		isLoading: state.isLoading,
+	}))
+
+	const { imageUploaded } = useCloudinaryStore((state) => ({
+		imageUploaded: state.originalImage,
 	}))
 
 	return (
@@ -26,23 +33,35 @@ export function Filters() {
 					{filters.map((filter) => (
 						<CarouselItem
 							key={filter.id}
-							className='pl-1 md:basis-1/2 lg:basis-1/3 flex justify-center items-center w-full h-20 cursor-pointer'
-							onClick={() =>
-								setFilterStore({
-									filter: filter.type,
+							className={cn(
+								'pl-1 md:basis-1/2 lg:basis-1/3 flex justify-center items-center w-full h-20 cursor-pointer',
+								(!imageUploaded || isLoading) &&
+									'cursor-not-allowed opacity-50'
+							)}
+							onClick={() => {
+								if (!imageUploaded || isLoading) return
+								setFilterStore({ filter: filter, isLoading: true })
+
+								const transformedImage = getCldImageUrl({
+									src: imageUploaded,
+									replaceBackground: filter.prompt,
 								})
-							}
+
+								setCloudinaryStore({
+									transformedImage,
+								})
+							}}
 						>
 							<div className='p-1 h-full w-full'>
 								<div
 									className={cn(
 										'bg-neutral-800/20 backdrop-blur rounded-lg relative overflow-hidden w-full h-full border-none',
-										filterActive === filter.type &&
+										filterActive?.type === filter.type &&
 											'outline outline-2'
 									)}
 									style={{
 										outlineColor:
-											filterActive === filter.type
+											filterActive?.type === filter.type
 												? filter.color
 												: 'transparent',
 									}}
@@ -52,13 +71,13 @@ export function Filters() {
 											className='font-rage  transition-colors duration-300 relative'
 											style={{
 												color:
-													filterActive === filter.type
+													filterActive?.type === filter.type
 														? filter.color
 														: '#A2A2A2',
 											}}
 										>
 											{filter.type}
-											{filterActive === filter.type && (
+											{filterActive?.type === filter.type && (
 												<span
 													className='absolute inset-0 blur opacity-20 rounded-full w-full h-full'
 													style={{
