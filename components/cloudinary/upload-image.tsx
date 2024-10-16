@@ -6,8 +6,6 @@ import type {
 } from 'next-cloudinary'
 import { CLOUDINARY_UPLOAD_PRESET } from '~consts'
 import { setCloudinaryStore } from '~/stores/cloudinary'
-import { Button } from '~ui/button'
-import { Images } from 'lucide-react'
 
 const config: CldUploadWidgetProps = {
 	uploadPreset: CLOUDINARY_UPLOAD_PRESET,
