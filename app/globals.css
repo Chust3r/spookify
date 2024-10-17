@@ -47,6 +47,59 @@ body {
 		@apply border-border;
 	}
 	body {
-		@apply bg-background text-foreground overflow-y-auto overflow-x-hidden;
+		@apply bg-background text-foreground overflow-y-auto overflow-x-hidden select-none;
+	}
+}
+
+.ghost {
+	background-image: url('/ghost-sprite-sheet.png');
+	background-size: 548px 48px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	animation: ghost-animation 1.5s steps(12) infinite;
+	scale: 0.5;
+}
+
+@keyframes ghost-animation {
+	from {
+		background-position-x: 0;
+	}
+	to {
+		background-position-x: -548px;
+	}
+}
+
+.pumpkin {
+	background-image: url('/pumpkin-sprite-sheet.png');
+	background-size: 548px 48px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	animation: pumpkin-animation 1.5s steps(12) infinite;
+	scale: 0.5;
+}
+
+@keyframes pumpkin-animation {
+	from {
+		background-position-x: 0;
+	}
+	to {
+		background-position-x: -548px;
+	}
+}
+.pumpkin-two {
+	background-image: url('/pumpkin-two-sprite-sheet.png');
+	background-size: 548px 48px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	animation: pumpkin-two-animation 1.5s steps(12) infinite;
+	scale: 0.5;
+}
+
+@keyframes pumpkin-two-animation {
+	from {
+		background-position-x: 0;
+	}
+	to {
+		background-position-x: -548px;
 	}
 }

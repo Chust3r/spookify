@@ -15,16 +15,18 @@ interface IGhost {
 const getRandom = (min: number, max: number) =>
 	Math.random() * (max - min) + min
 
+const getRandomScale = () => getRandom(0.4, 1)
+
 export function Ghosts() {
 	const [ghosts, setGhosts] = useState<IGhost[]>([])
 
 	useEffect(() => {
-		const generatedGhosts = Array.from({ length: 30 }).map(() => ({
+		const generatedGhosts = Array.from({ length: 20 }).map(() => ({
 			id: Math.random(),
 			x: getRandom(-10, 110),
 			y: getRandom(-10, 100),
 			delay: getRandom(0, 10),
-			size: getRandom(20, 40),
+			size: getRandomScale(),
 			duration: getRandom(8, 15),
 		}))
 		setGhosts(generatedGhosts)
@@ -53,7 +55,7 @@ export function Ghosts() {
 						ease: 'easeInOut',
 					}}
 				>
-					<GhostSprite size={ghost.size} />
+					<GhostSprite size={ghost.size} delay={ghost.delay}/>
 				</motion.div>
 			))}
 		</div>
