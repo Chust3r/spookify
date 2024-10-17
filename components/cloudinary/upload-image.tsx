@@ -4,11 +4,10 @@ import type {
 	CldUploadWidgetProps,
 	CloudinaryUploadWidgetInfo,
 } from 'next-cloudinary'
-import { CLOUDINARY_UPLOAD_PRESET } from '~consts'
-import { setCloudinaryStore } from '~/stores/cloudinary'
+import { setCloudinaryStore } from '~stores/cloudinary'
 
 const config: CldUploadWidgetProps = {
-	uploadPreset: CLOUDINARY_UPLOAD_PRESET,
+	uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
 	options: {
 		maxFiles: 1,
 		multiple: false,
