@@ -32,12 +32,6 @@ export const filters: IFilter[] = [
 	},
 	{
 		id: 5,
-		type: 'fear',
-		color: '#F44336',
-		shadow: '#C62828',
-	},
-	{
-		id: 6,
 		type: 'witches',
 		color: '#333333',
 		shadow: '#424242',
