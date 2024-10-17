@@ -23,7 +23,9 @@
 			"~lib/*": ["./lib/*"],
 			"~components/*": ["./components/*"],
 			"~ui/*": ["./components/ui/*"],
-			"~stores/*": ["./stores/*"]
+			"~stores/*": ["./stores/*"],
+			"~auth": ["./auth/auth.ts"],
+			"~db": ["./lib/db.ts"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
