@@ -5,7 +5,8 @@ import { cn } from '~lib/utils'
 import { Header } from '~components/header'
 import { Content } from '~components/content'
 import { Footer } from '~components/footer'
-import { Ghosts } from '~/components/ghosts'
+import { Ghosts } from '~components/ghosts'
+import { getSession } from '~lib/session'
 
 const geistSans = localFont({
 	src: './fonts/GeistVF.woff',
@@ -27,7 +28,9 @@ interface Props {
 	children: React.ReactNode
 }
 
-function Layout({ children }: Props) {
+async function Layout({ children }: Props) {
+	const session = await getSession()
+
 	return (
 		<html lang='en'>
 			<body
@@ -40,7 +43,7 @@ function Layout({ children }: Props) {
 			>
 				<Ghosts />
 				<Header />
-				<Content>{children}</Content>
+				<Content session={session}>{children}</Content>
 				<Footer />
 			</body>
 		</html>
@@ -51,7 +54,8 @@ export default Layout
 
 export const metadata: Metadata = {
 	title: 'Spookify',
-	description: 'From everyday to monstrous, in one click',
+	description:
+		'Spookify adds monstrous filters to your images, transforming them into hauntingly delightful creations. Unleash your creativity with a range of spooky effects that bring your photos to life with a chilling twist!',
 	icons: {
 		icon: '/icon.png',
 	},

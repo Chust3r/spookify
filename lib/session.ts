@@ -1,11 +1,11 @@
-import { redirect } from 'next/navigation'
 import { auth } from '~auth'
 import { db } from '~db'
+import type { User } from '@prisma/client'
 
-export const getSession = async () => {
+export const getSession = async (): Promise<User | null> => {
 	const session = await auth()
 
-	if (!session?.user?.email) redirect('/auth')
+	if (!session?.user?.email) return null
 
 	const user = await db.user.findUnique({
 		where: {
@@ -13,7 +13,7 @@ export const getSession = async () => {
 		},
 	})
 
-	if (!user) redirect('/auth')
+	if (!user) return null
 
 	return user
 }
