@@ -1,7 +1,6 @@
 import { map } from 'nanostores'
 import { useStore } from '@nanostores/react'
 import { getCldImageUrl } from 'next-cloudinary'
-import { getFilterOptions } from '~/lib/filters'
 
 type Selector<T> = (state: ImageStore) => T
 
@@ -14,7 +13,7 @@ interface ImageStore {
 }
 
 const store = map<ImageStore>({
-	originalImage: 'spookify/qnkgnflzm2wfwtss6ebt',
+	originalImage: '',
 	transformedImage: '',
 	isLoading: false,
 	history: [],
@@ -28,11 +27,9 @@ export const setCloudinaryStore = (state: Partial<ImageStore>) => {
 export const setFilter = (filter: string) => {
 	const prev = store.get()
 
-	const options = getFilterOptions(filter)
-
 	const transformedImage = getCldImageUrl({
 		src: prev.originalImage,
-		...options,
+		namedTransformations: [filter],
 	})
 
 	store.set({
