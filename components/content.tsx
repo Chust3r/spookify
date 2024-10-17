@@ -8,7 +8,7 @@ interface Props {
 
 export function Content({ children, session }: Props) {
 	return (
-		<main className='flex-1 flex-col w-full'>
+		<main className='flex-1 flex-grow flex gap-3 flex-col w-full h-full min-h-max'>
 			<IsLogged session={session} />
 			{children}
 		</main>

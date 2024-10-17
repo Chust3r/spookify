@@ -11,7 +11,7 @@ export function RenderImages() {
 	)
 
 	return (
-		<div className='flex gap-5 rounded overflow-hidden'>
+		<div className='flex flex-col md:flex-row gap-5 rounded overflow-hidden'>
 			{!originalImage ? (
 				<UploadImage />
 			) : (
