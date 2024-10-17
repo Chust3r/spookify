@@ -28,9 +28,13 @@ export function AuthComponent() {
 							Google
 						</span>
 					</Button>
-					<Button variant='secondary' className='w-full relative'>
+					<Button
+						variant='secondary'
+						className='w-full relative'
+						onClick={() => signInGithub()}
+					>
 						<span className='absolute z-[-2] w-full h-full bg-neutral-800/40 blur' />
-						<Github onClick={() => signInGithub()} />
+						<Github />
 						<span className='ml-2 font-rage text-muted-foreground'>
 							GitHub
 						</span>
