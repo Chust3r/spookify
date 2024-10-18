@@ -9,14 +9,12 @@ interface ImageStore {
 	transformedImage: string
 	filter?: string
 	isLoading: boolean
-	history: string[]
 }
 
 const store = map<ImageStore>({
 	originalImage: '',
 	transformedImage: '',
 	isLoading: false,
-	history: [],
 })
 
 export const setCloudinaryStore = (state: Partial<ImageStore>) => {
