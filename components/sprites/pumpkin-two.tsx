@@ -8,7 +8,7 @@ export function PumpkinTwoSprite({ delay = 20, size = 1 }: Props) {
 		<div>
 			<span className='absolute bg-[#7811ff] blur opacity-10 rounded-full w-full h-full' />
 			<div
-				className='ghost'
+				className='pumpkin-two'
 				style={{
 					width: '45px',
 					height: '48px',

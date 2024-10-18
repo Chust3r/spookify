@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { PumpkinTwoSprite } from '~components/sprites/pumpkin-two'
 import { setCloudinaryStore } from '~stores/cloudinary'
 import { useEffect } from 'react'
+import { addToHistory } from '~/actions/history'
 
 interface Props {
 	imageUrl: string
@@ -26,6 +27,20 @@ export function RenderTransformImage({ imageUrl }: Props) {
 			setCloudinaryStore({ isLoading: false })
 		}
 	}, [isLoading, imageUrl])
+
+	useEffect(() => {
+		const saveImageToHistory = async () => {
+			if (imageUrl) {
+				try {
+					await addToHistory(imageUrl)
+				} catch (error) {
+					console.error('Error adding to history:', error)
+				}
+			}
+		}
+
+		saveImageToHistory()
+	}, [imageUrl])
 
 	const renderContent = () => {
 		if (!imageUrl) {
