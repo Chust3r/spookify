@@ -10,10 +10,18 @@ import { filters } from '~lib/filters'
 import { cn } from '~lib/utils'
 import { setFilter, useCloudinaryStore } from '~stores/cloudinary'
 
-export function Filters() {
+interface Props {
+	totalTransformations: number
+	maxTransformations: number
+}
+
+export function Filters({ maxTransformations, totalTransformations }: Props) {
 	const { isLoading, originalImage, filter } = useCloudinaryStore(
 		(state) => state
 	)
+
+	const isMaxTransformationsReached =
+		totalTransformations >= maxTransformations
 
 	return (
 		<div className='flex flex-col gap-2 w-full max-w-3xl select-none'>
@@ -29,11 +37,18 @@ export function Filters() {
 							key={item.id}
 							className={cn(
 								'pl-1 md:basis-1/2 lg:basis-1/3 flex justify-center items-center w-full h-20 cursor-pointer',
-								(!originalImage || isLoading) &&
+								(!originalImage ||
+									isLoading ||
+									isMaxTransformationsReached) &&
 									'cursor-not-allowed opacity-50'
 							)}
 							onClick={() => {
-								if (!originalImage || isLoading) return
+								if (
+									!originalImage ||
+									isLoading ||
+									isMaxTransformationsReached
+								)
+									return
 
 								if (item.type !== filter) {
 									setFilter(item.type)
@@ -55,7 +70,7 @@ export function Filters() {
 								>
 									<div className='w-full h-full flex items-center justify-center'>
 										<p
-											className='font-rage  transition-colors duration-300 relative'
+											className='font-rage transition-colors duration-300 relative'
 											style={{
 												color:
 													item?.type === filter

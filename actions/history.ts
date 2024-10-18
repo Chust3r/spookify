@@ -8,6 +8,19 @@ export const addToHistory = async (imageUrl: string) => {
 
 	if (!session) redirect('/auth')
 
+	const user = await db.user.findUnique({
+		where: {
+			// biome-ignore lint/style/noNonNullAssertion: <explanation>
+			email: session?.user?.email!,
+			// biome-ignore lint/style/noNonNullAssertion: <explanation>
+			id: session?.user?.id!,
+		},
+	})
+
+	if (user?.history?.includes(imageUrl)) {
+		return
+	}
+
 	await db.user.update({
 		where: {
 			// biome-ignore lint/style/noNonNullAssertion: <explanation>

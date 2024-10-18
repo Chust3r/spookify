@@ -13,7 +13,8 @@ interface ImageStore {
 
 const store = map<ImageStore>({
 	originalImage: '',
-	transformedImage: '',
+	transformedImage:
+		'https://res.cloudinary.com/deqtryhrd/image/upload/t_zombies/f_auto/q_auto/v1/mw8ru2bpo4hbspbvawb2?_a=BAVCyODW0',
 	isLoading: false,
 })
 
@@ -28,6 +29,7 @@ export const setFilter = (filter: string) => {
 	const transformedImage = getCldImageUrl({
 		src: prev.originalImage,
 		namedTransformations: [filter],
+		format: 'jpg',
 	})
 
 	store.set({
