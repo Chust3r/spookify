@@ -1,10 +1,12 @@
 'use client'
 import { useCloudinaryImage } from '~/hooks/useCloudinaryImage'
+import { useDownloadImage } from '~/hooks/useDownloadImage' // Importar el hook personalizado
 import Image from 'next/image'
 import { PumpkinTwoSprite } from '~components/sprites/pumpkin-two'
 import { setCloudinaryStore } from '~stores/cloudinary'
 import { useEffect } from 'react'
 import { addToHistory } from '~/actions/history'
+import { Download } from 'lucide-react'
 
 interface Props {
 	imageUrl: string
@@ -12,6 +14,7 @@ interface Props {
 
 export function RenderTransformImage({ imageUrl }: Props) {
 	const { isLoading, error } = useCloudinaryImage(imageUrl)
+	const { downloadImage, isDownloading, downloadError } = useDownloadImage() // Hook para descargar
 
 	useEffect(() => {
 		if (imageUrl) {
@@ -30,7 +33,7 @@ export function RenderTransformImage({ imageUrl }: Props) {
 
 	useEffect(() => {
 		const saveImageToHistory = async () => {
-			if (imageUrl) {
+			if (!isLoading && imageUrl && !error) {
 				try {
 					await addToHistory(imageUrl)
 				} catch (error) {
@@ -40,7 +43,7 @@ export function RenderTransformImage({ imageUrl }: Props) {
 		}
 
 		saveImageToHistory()
-	}, [imageUrl])
+	}, [isLoading, imageUrl, error])
 
 	const renderContent = () => {
 		if (!imageUrl) {
@@ -84,12 +87,21 @@ export function RenderTransformImage({ imageUrl }: Props) {
 		}
 
 		return (
-			<Image
-				src={imageUrl}
-				alt='Transformed Image'
-				fill
-				className='w-full h-full object-cover object-center rounded overflow-hidden'
-			/>
+			<>
+				<Image
+					src={imageUrl}
+					alt='Transformed Image'
+					fill
+					className='w-full h-full object-cover object-center rounded overflow-hidden'
+				/>
+				<button
+					type='button'
+					onClick={() => downloadImage(imageUrl)}
+					className='absolute top-0 right-0 m-2 rounded-full grid place-content-center aspect-square h-8 w-8 bg-neutral-800/50 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 backdrop-blur transition-all duration-300'
+				>
+					<Download className='size-4'/>
+				</button>
+			</>
 		)
 	}
 

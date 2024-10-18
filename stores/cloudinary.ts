@@ -13,8 +13,7 @@ interface ImageStore {
 
 const store = map<ImageStore>({
 	originalImage: '',
-	transformedImage:
-		'https://res.cloudinary.com/deqtryhrd/image/upload/t_zombies/f_auto/q_auto/v1/mw8ru2bpo4hbspbvawb2?_a=BAVCyODW0',
+	transformedImage: '',
 	isLoading: false,
 })
 
