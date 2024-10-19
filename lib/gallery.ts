@@ -60,7 +60,7 @@ export const gallery: ImageGallery[] = [
 			name: 'Michael Dam',
 			link: 'https://unsplash.com/@michaeldam?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
 		},
-		url: 'https://res.cloudinary.com/dtgag40iw/image/upload/v1729310951/img_mizgyg_ru12i8.jpg',
+		url: 'https://res.cloudinary.com/dtgag40iw/image/upload/v1729350847/flq0ywxr6vxgqailqahb_hqgnbc.webp',
 		originalImage:
 			'ttps://unsplash.com/es/fotos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
 		filter: 'zombies',
